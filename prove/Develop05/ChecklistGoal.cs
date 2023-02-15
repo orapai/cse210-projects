@@ -8,7 +8,7 @@ public class ChecklistGoal : Goal
     public ChecklistGoal()
     {
     }
-    public ChecklistGoal(string goalType, string goalName, string description, int points, int bonusPoints, int recorded, int numberOfTimes): base(goalType, goalName, description, points, numberOfTimes, bonusPoints, recorded)
+    public ChecklistGoal(string goalType, string goalName, string description, int points, int bonusPoints, int recorded, int numberOfTimes): base(goalType, goalName, description, points, bonusPoints,  recorded, numberOfTimes)
     {
         _bonusPoints = bonusPoints;
         _numberOfTimes = numberOfTimes;

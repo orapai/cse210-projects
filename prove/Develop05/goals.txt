@@ -1,2 +1,2 @@
-250
+500
 Simple Goal|out of town|travel to places I've never been|250|True

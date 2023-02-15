@@ -19,7 +19,7 @@ public abstract class Goal
         _description = description;
         _points = points;
     }
-    public Goal(string goalType, string goalName, string description, int points, int numberOfTimes, int bonusPoints, int recorded)
+    public Goal(string goalType, string goalName, string description, int points, int bonusPoints, int recorded, int numberOfTimes)
     {
         _goalType = goalType;
         _goalName = goalName;

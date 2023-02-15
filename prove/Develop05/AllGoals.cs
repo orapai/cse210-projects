@@ -7,6 +7,7 @@ public class AllGoals
     private int _voidCounter = 0;
     private List<Goal> _allGoal = new List<Goal>();
     private int _points = 0;
+    private string _fileName;
 
     public void Add(Goal goal)
     {
@@ -71,27 +72,30 @@ public class AllGoals
     }
     public void LoadGoals()
     {
-        List<string> loadedFile = LoadFile(GetFileName());
+        _fileName = GetFileName();
+        List<string> loadedFile = LoadFile(_fileName);
         Goal goal = null;
+        bool start = false;
         foreach(string goalFromFile in loadedFile)
         {
+            if (start == false)
+            {
+                string[] firstLine = goalFromFile.Split('|');
+                string line1 = firstLine[0];
+                SetTotalPoints(int.Parse(line1));
+                start = true;
+            }
             string[] goalParts = goalFromFile.Split('|');
             string goalType = goalParts[0];
             switch(goalType)
             {
                 case "Simple Goal":
-                _points = int.Parse(goalParts[3]);
-                SetTotalPoints(_points);
                 goal = new SimpleGoal(goalParts[0], goalParts[1], goalParts[2], int.Parse(goalParts[3]), bool.Parse(goalParts[4]));
                 break;
                 case "Eternal Goal":
-                _points = int.Parse(goalParts[3]);
-                SetTotalPoints(_points);
                 goal = new EternalGoal(goalParts[0], goalParts[1], goalParts[2], int.Parse(goalParts[3]));
                 break;
                 case "Checklist Goal":
-                _points = int.Parse(goalParts[3]);
-                SetTotalPoints(_points);
                 goal = new ChecklistGoal(goalParts[0], goalParts[1], goalParts[2], int.Parse(goalParts[3]), int.Parse(goalParts[4]), int.Parse(goalParts[5]), int.Parse(goalParts[6]));
                 break;
             }
@@ -153,8 +157,65 @@ public class AllGoals
             }
             x++;
         }
-
     }
+    public void DeleteGoal()
+    {
+        displayGoalsToAccomplish();
+        Console.Write("Which goal do you want to remove? ");
+        int delete = int.Parse(Console.ReadLine());
+        int x = 0;
+
+        List<string> loadedFile = LoadFile(_fileName);
+        List<string> newFile = new List<string>();
+        AllGoals newAllGoal = new AllGoals();
+        List<Goal> allGoal = new List<Goal>();
+        _allGoal = null;
+        _allGoal = allGoal;
+        Goal goal = null;
+        bool start = false;
+        foreach(string goalFromFile in loadedFile)
+        {
+            if (x != delete) //only add the goal to the new list if not chosen to be removed
+            {
+            newFile.Add(goalFromFile); 
+            }
+            x++;
+        }   
+        foreach(string fromFile in newFile)
+        {
+            if (start == false)
+            {
+                string[] firstLine = fromFile.Split('|');
+                string line1 = firstLine[0];
+                _points = int.Parse(line1);
+                newAllGoal._points = int.Parse(line1);
+                start = true;
+            }
+
+            string[] goalParts = fromFile.Split('|');
+            string goalType = goalParts[0];
+            switch(goalType)
+            {
+                case "Simple Goal":
+                goal = new SimpleGoal(goalParts[0], goalParts[1], goalParts[2], int.Parse(goalParts[3]), bool.Parse(goalParts[4]));
+                _allGoal.Add(goal);
+                break;
+                case "Eternal Goal":
+                goal = new EternalGoal(goalParts[0], goalParts[1], goalParts[2], int.Parse(goalParts[3]));
+                _allGoal.Add(goal);
+                break;
+                case "Checklist Goal":
+                goal = new ChecklistGoal(goalParts[0], goalParts[1], goalParts[2], int.Parse(goalParts[3]), int.Parse(goalParts[4]), int.Parse(goalParts[5]), int.Parse(goalParts[6]));
+                _allGoal.Add(goal);
+                break;
+            }
+            if(goal != null)
+            {
+                newAllGoal.Add(goal);
+            }
+        }
+        System.IO.File.WriteAllLines($@"{_fileName}", newAllGoal.SaveGoals()); //automatically saved data to loaded file
+    }    
     public void Pause(int duration)
     {
         Stopwatch stopwatch = new Stopwatch();

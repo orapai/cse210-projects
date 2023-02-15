@@ -6,7 +6,7 @@ class Program
     {
         AllGoals goals = new AllGoals();
         int choice = 0;
-        while (choice != 6)
+        while (choice != 7)
         {
             Program.DisplayMenu(goals);
             choice = int.Parse(Console.ReadLine());
@@ -40,7 +40,7 @@ class Program
                     int numOfTime = goal.GetTimesToAccomplishGoal();
                     goal.SetBonusPoints();
                     int bonusPoints = goal.GetBonusPoints();
-                    goals.Add(new ChecklistGoal("Checklist Goal", goal.GetGoalName(), goal.GetDescription(), goal.GetPoints(), numOfTime, bonusPoints, 0));
+                    goals.Add(new ChecklistGoal("Checklist Goal", goal.GetGoalName(), goal.GetDescription(), goal.GetPoints(), bonusPoints, 0, numOfTime));
                     Console.Clear();
                     break;
                 }
@@ -55,14 +55,18 @@ class Program
                 break;
                 case 4:
                 Console.Clear();
-                goals.LoadGoals();
+                goals.DeleteGoal();
                 break;
                 case 5:
+                Console.Clear();
+                goals.LoadGoals();
+                break;
+                case 6:
                 Console.Clear();
                 goals.RecordGoalAccomplished();
                 Console.Clear();
                 break;
-                case 6: break;
+                case 7: break;
             }
         }
     }
@@ -75,9 +79,10 @@ class Program
         "\n     1. Create New Goal" +
         "\n     2. List Goals" +
         "\n     3. Save Goals" +
-        "\n     4. Load Goals" +
-        "\n     5. Record Event" +
-        "\n     6. Quit");
+        "\n     4. Remove Goals" +
+        "\n     5. Load Goals" +
+        "\n     6. Record Event" +
+        "\n     7. Quit");
         Console.WriteLine("------------------------------");
         Console.Write("Select a choice from the menu: ");
     }
