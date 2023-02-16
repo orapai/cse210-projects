@@ -3,6 +3,7 @@ using System;
 public class Videos
 {
     public List<Video> _videos = new List<Video>();
+    Random numberCount = new Random();
     public Videos()
     {
     }
@@ -33,19 +34,16 @@ public class Videos
     };
     public string GetComment()
     {
-        Random numberCount = new Random();
         int random = numberCount.Next(Comments.Count);
         return Comments[random];
     }
     public string GetName()
     {
-        Random numberCount = new Random();
         int random = numberCount.Next(Names.Count);
         return Names[random];
     }
     public string GetTitle()
     {
-        Random numberCount = new Random();
         int random = numberCount.Next(Title.Count);
         return Title[random];
     }
