@@ -27,7 +27,7 @@ public class Order
     {
         Console.WriteLine($"\nPacking Label:\n{PackingLabel()}");
         Console.WriteLine($"Shipping Label:\n{ShippingLabel()}");
-        Console.WriteLine($"\nTotal Price:\n{CalculateOrderCost()}");
+        Console.WriteLine($"\nTotal Price:\n${CalculateOrderCost()}");
     }
     public int CalculateOrderCost()
     {
