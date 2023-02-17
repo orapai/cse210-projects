@@ -5,7 +5,7 @@ public class Comment
     public string _personName;
     public string _textComment;
 
-    public string dipalyComment(Comment comments)
+    public string DipalyComment(Comment comments)
     {
         return $"{comments._personName}: {comments._textComment}";
     }

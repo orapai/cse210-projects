@@ -5,7 +5,7 @@ public class Video
     public string _title;
     public string _author;
     public int _lengthInSeconds;
-    public List<Comment> comment = new List<Comment>();
+    public List<Comment> _comment = new List<Comment>();
 
     public void displayVideo()
     {
@@ -15,15 +15,15 @@ public class Video
         Console.WriteLine($"\nTitle: {_title}\nAuthor: {_author}" +
         $"\nDuration: {_lengthInSeconds} seconds");
         Console.WriteLine("\n-----------------------------");
-        foreach (Comment comments in comment)
+        foreach (Comment comments in _comment)
         {
             commentCount += 1;
         }
         Console.WriteLine($"         {commentCount} comments ");
         Console.WriteLine("-----------------------------");
-        foreach (Comment comments in comment)
+        foreach (Comment comments in _comment)
         {
-            Console.Write($"\n{comments.dipalyComment(comments)}");
+            Console.Write($"\n{comments.DipalyComment(comments)}");
             x++;
         }
     }

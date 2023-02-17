@@ -7,7 +7,7 @@ public class Videos
     public Videos()
     {
     }
-    private List<string> Names = new List<string>
+    private List<string> _names = new List<string>
     {
         "John David", "Harley", "John Doe", "Lee Smith",
         "Jack", "Ann Dee", "Whitney Sy", "Dave Mole", "Mee",
@@ -15,14 +15,14 @@ public class Videos
         "Dean Fan", "King", "Catastrophe", "Anonymous", "Johnny", 
         "Unknown", "Nope", "Kelly J.", "Merrari", "Karea", "Fin"
     };
-    private List<string> Title = new List<string>
+    private List<string> _title = new List<string>
     {
         "Sunny Day", "Today's Tomorrow", "Finally Here!", "What Else Is There",
         "Tell Me It's Not Real", "Take Me Back To November", "No One Knows", 
         "From Here", "Take That Step", "The Wind's Whisper", "Delighted",
         "One Two Three", "Only You", "Tonight's Dinner", "Friendly", "Sweet Yet Bitter"
     };
-    private List<string> Comments = new List<string>
+    private List<string> _comments = new List<string>
     {
         "Incredibly amazing!", "Name of the actor please...", "love it!", "Clever!",
         "I cannot", "this is so awesome!", "can't wait for the next episode!!!", 
@@ -34,18 +34,18 @@ public class Videos
     };
     public string GetComment()
     {
-        int random = numberCount.Next(Comments.Count);
-        return Comments[random];
+        int random = numberCount.Next(_comments.Count);
+        return _comments[random];
     }
     public string GetName()
     {
-        int random = numberCount.Next(Names.Count);
-        return Names[random];
+        int random = numberCount.Next(_names.Count);
+        return _names[random];
     }
     public string GetTitle()
     {
-        int random = numberCount.Next(Title.Count);
-        return Title[random];
+        int random = numberCount.Next(_title.Count);
+        return _title[random];
     }
     public void displayAllVideos()
     {

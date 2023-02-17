@@ -29,7 +29,7 @@ class Program
                                 Comment comment = new Comment();
                                 comment._personName = videos.GetName();
                                 comment._textComment = videos.GetComment();
-                                video.comment.Add(comment);
+                                video._comment.Add(comment);
                                 commentCount--;
                             }
                         break;
@@ -40,7 +40,7 @@ class Program
                                 Comment comment = new Comment();
                                 comment._personName = videos.GetName();
                                 comment._textComment = videos.GetComment();
-                                video.comment.Add(comment);
+                                video._comment.Add(comment);
                                 commentCount--;
                             }
                         break;
@@ -67,7 +67,7 @@ class Program
                                 Comment comment = new Comment();
                                 comment._personName = videos.GetName();
                                 comment._textComment = videos.GetComment();
-                                video.comment.Add(comment);
+                                video._comment.Add(comment);
                                 commentCount--;
                             }
                             break;
@@ -78,7 +78,7 @@ class Program
                                 Comment comment = new Comment();
                                 comment._personName = videos.GetName();
                                 comment._textComment = videos.GetComment();
-                                video.comment.Add(comment);
+                                video._comment.Add(comment);
                                 commentCount--;
                             }
                         break;
