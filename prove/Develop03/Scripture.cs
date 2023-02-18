@@ -25,12 +25,12 @@ public class Scripture
     }
     public void hide()
     {
-        int numToRemove = 1;
+        int numToRemove = new Random().Next(1,3);
         int textRemoved = 0;
         do 
         {
-            int rndIndex = new Random().Next(scripture.Count());
-            //only replace worrd if not been replaced yet
+            int rndIndex = new Random().Next(0, scripture.Count());
+            //only replace word if not been replaced yet
             if(scripture[rndIndex].Contains('_') == false)
             {
                 scripture[rndIndex] = new string('_', scripture[rndIndex].Length);

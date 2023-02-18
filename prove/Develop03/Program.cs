@@ -5,7 +5,7 @@ class Program
     static void Main(string[] args)
     {
         Reference reference = new Reference("Proverbs", "3", "5");
-        Text text = new Text(reference, "Trust in the Lord with all thine heart; and lean not unto thine own understanding.In all thy ways acknowledge him, and he shall bdirect thy paths.");
+        Text text = new Text(reference, "Trust in the Lord with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall bdirect thy paths.");
         Scripture scripture = new Scripture(text);
         string answer = "";
         bool start = true;
@@ -25,7 +25,7 @@ class Program
             Console.WriteLine();
             Console.WriteLine("Press enter to continue or type 'quit' to finish: ");
             Console.WriteLine();
-            Console.ReadLine();
+            answer = Console.ReadLine();
         }
         while(answer!="quit" && scripture.hasWordsLeft() ==  true);
     }
